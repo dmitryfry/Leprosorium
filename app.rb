@@ -13,7 +13,7 @@ before do
 end
 
 configure do
-	init_db
+	init_db 
 	@db.execute 'CREATE TABLE IF NOT EXISTS Posts
 	( 
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,7 +32,15 @@ get '/new' do
 end
 
 post '/new' do
+
 	content = params[:content]
 
-	erb "You typed #{content}"
+	if content.length <= 0
+
+		@error = 'Type post text'
+		return erb :new
+
+	end
+
+	erb 'молодец'
 end
