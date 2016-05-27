@@ -9,11 +9,15 @@
 </p>
 <br />
 <h4>Comments</h4>
-
+<br />
 <% @comments.each do |comment| %>
-	<p>
+	<p style="font-size: 18px">
 		<%= comment['content'] %>
+		<br />
+		<br />
+		<span style="font-size: 8px; color: #999" >Added at <%= comment['created_date'] %></span>
 	</p>
+	<hr />
 
 
 <% end%>
