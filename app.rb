@@ -18,6 +18,7 @@ configure do
 	( 
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		created_date DATE,
+		login TEXT,
 		content TEXT
 	)'
 
@@ -45,6 +46,7 @@ end
 post '/new' do
 
 	content = params[:content]
+	login	= params[:login]
 
 	if content.length <= 0
 
@@ -53,7 +55,7 @@ post '/new' do
 
 	end
 
-	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
+	@db.execute 'insert into Posts (content, login, created_date) values (?, ?, datetime())', [content, login]
 
 	redirect to '/'
 end
